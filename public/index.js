@@ -1,7 +1,7 @@
 const gifEl = document.getElementById("gif");
 const yesBtnEl = document.getElementById("yes-btn");
 const noBtnEl = document.getElementById("no-btn");
-let stage = 1;
+let noStage = 1;
 
 function yesClick() {
     // Remove buttons
@@ -12,5 +12,13 @@ function yesClick() {
 }
 
 function noClick() {
-    console.log("no");
+    gifEl.src = `gifs/jigglypuff-sad-${noStage}.gif`;
+
+    let yesSize = parseFloat(getComputedStyle(yesBtnEl).fontSize);
+    yesBtnEl.style.fontSize = (yesSize * 1.4) + "px";
+
+    let noSize = parseFloat(getComputedStyle(noBtnEl).fontSize);
+    noBtnEl.style.fontSize = (noSize * 0.8) + "px";
+    
+    noStage = (noStage % 4) + 1;
 }
